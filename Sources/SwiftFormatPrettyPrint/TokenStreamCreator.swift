@@ -702,11 +702,13 @@ private final class TokenStreamCreator: SyntaxVisitor {
 
   func visit(_ node: ClosureExprSyntax) -> SyntaxVisitorContinueKind {
     if let signature = node.signature {
-      after(node.leftBrace, tokens: .break(.open))
+      
+//      after(node.leftBrace, tokens: .break(.open))
+      after(node.leftBrace, tokens: [.space(size: 1)])
       if node.statements.count > 0 {
-        after(signature.inTok, tokens: .break(.same))
+        after(signature.inTok, tokens: .break(.open))
       } else {
-        after(signature.inTok, tokens: .break(.same, size: 0))
+        after(signature.inTok, tokens: .break(.open, size: 0))
       }
       before(node.rightBrace, tokens: .break(.close))
     } else {
@@ -2142,9 +2144,10 @@ private final class TokenStreamCreator: SyntaxVisitor {
   func isCompactSingleFunctionCallArgument(_ argumentList: FunctionCallArgumentListSyntax) -> Bool {
     guard argumentList.count == 1 else { return false }
 
+    config.
     let expression = argumentList.first!.expression
     return expression is ArrayExprSyntax || expression is DictionaryExprSyntax
-      || expression is ClosureExprSyntax
+      || expression is ClosureExprSyntax || expression is TupleExprSyntax
   }
 }
 
