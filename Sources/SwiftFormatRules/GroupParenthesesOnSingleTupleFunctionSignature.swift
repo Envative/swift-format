@@ -28,7 +28,7 @@ import SwiftSyntax
 /// Lint: If a public declaration is missing a documentation comment, a lint error is raised.
 ///
 /// - SeeAlso: https://google.github.io/swift#where-to-document
-public final class AllPublicDeclarationsHaveDocumentation: SyntaxLintRule {
+public final class GroupParenthesesOnSingleTupleFunctionSignature: SyntaxLintRule {
 
   public override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
     diagnoseMissingDocComment(node, name: node.fullDeclName, modifiers: node.modifiers)

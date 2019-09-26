@@ -2144,7 +2144,6 @@ private final class TokenStreamCreator: SyntaxVisitor {
   func isCompactSingleFunctionCallArgument(_ argumentList: FunctionCallArgumentListSyntax) -> Bool {
     guard argumentList.count == 1 else { return false }
 
-    config.
     let expression = argumentList.first!.expression
     return expression is ArrayExprSyntax || expression is DictionaryExprSyntax
       || expression is ClosureExprSyntax || expression is TupleExprSyntax

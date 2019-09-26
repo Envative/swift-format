@@ -83,9 +83,3 @@ public final class AllPublicDeclarationsHaveDocumentation: SyntaxLintRule {
     diagnose(.declRequiresComment(name), on: decl)
   }
 }
-
-extension Diagnostic.Message {
-  static func declRequiresComment(_ name: String) -> Diagnostic.Message {
-    return .init(.warning, "add a documentation comment for '\(name)'")
-  }
-}
